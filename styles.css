@@ -1,0 +1,46 @@
+/* bootstrap fixes */
+.input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover { z-index: inherit; }
+
+/* 'app style' resets */
+*:focus { outline: none !important; }
+
+/* boilerplate */
+body { background: #338166; font-family: 'Open Sans'; }
+main { margin-left: 70px; padding-top: 70px; padding-left: 30px; padding-right: 30px; color: #fff; }
+.input-group * { border: none; border-radius: 0; }
+
+/* common styles */
+.valign-content { display: table; }
+.valigned { display: table-cell; vertical-align: middle; }
+.flexbox { display: flex; align-items: center; }
+.flexbox.center { justify-content: center; }
+
+.pad { padding: 15px; }
+
+/* sidebar */
+#sidebar { width: 300px; z-index: 1000; position: fixed; left: -230px; top: 0; bottom: 0; background: #2d2d2d; transition: left .3s ease; }
+#sidebar #search-box * { height: 70px; }
+#sidebar #search-box input { padding: 5px 10px; font-size: 35px; }
+#sidebar #search-box button { width: 70px; font-size: 35px; text-align: center; padding: 0; }
+#sidebar #search-box button i { line-height: 70px; }
+#sidebar:hover, #sidebar.keep { left: 0; }
+
+/* pokemon search */
+#sidebar #pokemon-list { margin: 0; padding: 0; }
+#sidebar .pokemon-item { width: 100%; height: 70px; cursor: pointer; }
+#sidebar .pokemon-item .name { position: relative; color: #868686; font-size: 24px; padding: 5px 10px; text-align: center; }
+#sidebar .pokemon-item .icon { width: 70px; background: #868686; text-align: center; }
+#sidebar .pokemon-item .separator { position: absolute; bottom: 0; left: 0; right: 0; margin: 0 auto; width: 70%; border-bottom: 1px solid #868686; }
+#sidebar .pokemon-item:hover .name { color: #fff; }
+#sidebar .pokemon-item:hover .icon { background: #86b086; }
+#sidebar .pokemon-item .icon img { image-rendering: pixelated; transform: scale(2); }
+
+#picture { text-align: center; }
+#picture img { image-rendering: pixelated; width: 100%; height: auto; max-width: 288px; max-height: 288px; }
+
+/* basic characteristics */
+#name { font-size: 55px; font-family: 'Open Sans', sans-serif; font-weight: 800; }
+#nature { width: 300px; margin-top: 33px; }
+#level { width: 200px; margin-top: 33px; }
+#level input { text-align: center; }
+#level .arrow { padding-left: 3px; padding-right: 3px; cursor: pointer; -webkit-user-select: none; }
