@@ -11,7 +11,7 @@ import {FirstCapitalLetter} from '../pipes/first-capital-letter.pipe';
     template: `
     <div id="pokemon-list-container">
     <ul id="pokemon-list">
-        <li *ngFor="#pokemon of pokemons" class="pokemon-item valign-content" data-id="{{ pokemon.id }}">
+        <li *ngFor="#pokemon of pokemons" class="pokemon-item clickable valign-content" data-id="{{ pokemon.id }}">
             <span class="name valigned">{{ pokemon.name | firstCapitalLetter }}<div class="separator"></div></span>
             <span class="icon valigned"><img src="assets/pokemon/icon/{{ pokemon.id }}.png"></span>
         </li>
