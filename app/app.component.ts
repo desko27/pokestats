@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {NgClass} from 'angular2/common';
 
@@ -24,6 +24,8 @@ Ng2BootstrapConfig.theme = Ng2BootstrapTheme.BS4;
     templateUrl: 'templates/app.html'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     search: string = '';
+
+    ngOnInit() { window.loading_screen.finish(); }
 }

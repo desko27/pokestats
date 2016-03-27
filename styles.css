@@ -1,10 +1,16 @@
 /* bootstrap fixes */
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover { z-index: inherit; }
 
-/* 'app style' resets */
-*:focus { outline: none !important; }
+/* loading screen */
+.pg-loading h1 { color: #fff; font-size: 55px; font-family: 'Open Sans', sans-serif; font-weight: 800; }
+.pg-loading-screen .pg-loading-logo { animation-name: rotate; animation-duration: 2s; animation-iteration-count: infinite; animation-timing-function: linear; }
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
 /* boilerplate */
+*:focus { outline: none !important; }
 body { background: #338166; font-family: 'Open Sans'; }
 main { margin-left: 70px; padding-top: 70px; padding-left: 30px; padding-right: 30px; color: #fff; }
 .input-group * { border: none; border-radius: 0; }

@@ -3,12 +3,16 @@
     <title>PokeStats</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     
+    <!-- loading -->
+    <link rel="stylesheet" href="node_modules/please-wait/build/please-wait.css">
+    <script type="text/javascript" src="node_modules/please-wait/build/please-wait.min.js"></script>
+
     <!-- custom js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="main.js"></script>
 
     <!-- fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,700' type='text/css'>
 
     <!-- other stylesheets -->
     <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css"> -->
@@ -50,5 +54,13 @@
   <!-- 3. Display the application -->
   <body>
     <pokestats-app>Loading...</pokestats-app>
+
+    <script type="text/javascript">
+      window.loading_screen = window.pleaseWait({
+        logo: "assets/images/loading-logo.png",
+        backgroundColor: '#323232',
+        loadingHtml: '<h1>Loading...</h1>'
+      });
+    </script>
   </body>
 </html>
