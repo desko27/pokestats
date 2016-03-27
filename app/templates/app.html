@@ -1,18 +1,16 @@
 <aside id="sidebar" [ngClass]="{keep: searchBoxFocused}">
-    <div id="sidebar-child-container">
     
-        <div id="search-box" class="input-group">
-            <input type="text" class="form-control" placeholder="Pokemon..." [(ngModel)]="search" (keyup)="pokemonList.execFilter()" (focusin)="searchBoxFocused = true" (focusout)="searchBoxFocused = false">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    <i class="fa fa-search"></i>
-                </button>
-            </span>
-        </div>
-
-        <pokemon-list #pokemonList [search]="search"></pokemon-list>
-
+    <div id="search-box" class="input-group">
+        <input type="text" class="form-control" placeholder="Pokemon..." [(ngModel)]="search" (keyup)="pokemonList.execFilter()" (focusin)="searchBoxFocused = true" (focusout)="searchBoxFocused = false">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
     </div>
+
+    <pokemon-list #pokemonList [search]="search"></pokemon-list>
+
 </aside>
 
 <main>
@@ -21,13 +19,13 @@
         <div class="row">
 
             <div id="picture" class="col-xs-12 col-sm-12 col-md-3 pad flexbox center">
-                <img src="assets/pokemon/front/6.png">
+                <img src="assets/pokemon/front/{{ getPokemon().id }}.png">
             </div>
 
             <div class="col-md-9 pad flexbox">
 
                 <div><!-- flexbox vertical aligns this child -->
-                    <h1 id="name">Charizard</h1>
+                    <h1 id="name">{{ getPokemon().name | firstCapitalLetter }}</h1>
 
                     <div id="nature" class="input-group input-group-lg">
                         <span class="input-group-addon">Nature</span>

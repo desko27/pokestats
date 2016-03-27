@@ -35,9 +35,8 @@ main { margin-left: 70px; padding-top: 70px; padding-left: 30px; padding-right: 
 #sidebar:hover img, #sidebar.keep img { left: 0; -webkit-filter: grayscale(0%) !important; }
 
 /* scroll pokemon search */
-#sidebar #pokemon-list-container { overflow-y: scroll; height: 100%; padding-bottom: 52px; }
-#sidebar #pokemon-list-container::-webkit-scrollbar { width: 0px; }
-#sidebar #pokemon-list-container::-webkit-scrollbar-track-piece { background-color: transparent; -webkit-border-radius: 6px; }
+#sidebar #pokemon-list-container { overflow-y: scroll; height: 100%; padding-bottom: 70px; }
+#sidebar #pokemon-list-container::-webkit-scrollbar { display: none; }
 
 /* pokemon search */
 #sidebar #pokemon-list { margin: 0; padding: 0; background: #2d2d2d; transition: background .3s ease; }

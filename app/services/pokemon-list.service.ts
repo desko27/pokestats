@@ -1,10 +1,10 @@
 import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import {Pokemon} from './pokemon';
+import {Pokemon} from '../classes/pokemon';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class PokemonService {
+export class PokemonListService {
     constructor(private http: Http) { }
     
     private _pokemonsUrl = 'assets/pokemons.json';
