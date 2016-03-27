@@ -49,6 +49,7 @@ export class PokemonListComponent implements OnInit {
     }
 
     execFilter() {
+        document.getElementById('pokemon-list-container').scrollTop = 0;
         this.pokemons = this.filterPokemons(this.allPokemons);
     }
 
