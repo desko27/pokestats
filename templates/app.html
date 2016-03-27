@@ -1,7 +1,7 @@
 <aside id="sidebar" [ngClass]="{keep: searchBoxFocused}">
     
     <div id="search-box" class="input-group">
-        <input type="text" class="form-control" placeholder="Pokemon..." (focusin)="searchBoxFocused = true" (focusout)="searchBoxFocused = false">
+        <input type="text" class="form-control" placeholder="Pokemon..." [(ngModel)]="search" (keyup)="pokemonList.execFilter()" (focusin)="searchBoxFocused = true" (focusout)="searchBoxFocused = false">
         <span class="input-group-btn">
             <button class="btn btn-default" type="button">
                 <i class="fa fa-search"></i>
@@ -9,24 +9,7 @@
         </span>
     </div>
 
-    <ul id="pokemon-list">
-        
-        <li class="pokemon-item valign-content">
-            <span class="name valigned">Pikachu<div class="separator"></div></span>
-            <span class="icon valigned"><img src="assets/pokemon/icon/25.png"></span>
-        </li>
-        
-        <li class="pokemon-item valign-content">
-            <span class="name valigned">Charmander<div class="separator"></div></span>
-            <span class="icon valigned"><img src="assets/pokemon/icon/4.png"></span>
-        </li>
-        
-        <li class="pokemon-item valign-content">
-            <span class="name valigned">Charizard<div class="separator"></div></span>
-            <span class="icon valigned"><img src="assets/pokemon/icon/6.png"></span>
-        </li>
-
-    </ul>
+    <pokemon-list #pokemonList [search]="search"></pokemon-list>
 
 </aside>
 
