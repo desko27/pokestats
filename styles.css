@@ -25,6 +25,11 @@ main { margin-left: 70px; padding-top: 70px; padding-left: 30px; padding-right: 
 #sidebar #search-box button i { line-height: 70px; }
 #sidebar:hover, #sidebar.keep { left: 0; }
 
+/* scroll pokemon search */
+#sidebar #pokemon-list-container { overflow-y: scroll; height: 100%; padding-bottom: 52px; }
+#sidebar #pokemon-list-container::-webkit-scrollbar { width: 0px; }
+#sidebar #pokemon-list-container::-webkit-scrollbar-track-piece { background-color: transparent; -webkit-border-radius: 6px; }
+
 /* pokemon search */
 #sidebar #pokemon-list { margin: 0; padding: 0; }
 #sidebar .pokemon-item { width: 100%; height: 70px; cursor: pointer; }

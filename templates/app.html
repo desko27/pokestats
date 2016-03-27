@@ -1,16 +1,18 @@
 <aside id="sidebar" [ngClass]="{keep: searchBoxFocused}">
+    <div id="sidebar-child-container">
     
-    <div id="search-box" class="input-group">
-        <input type="text" class="form-control" placeholder="Pokemon..." [(ngModel)]="search" (keyup)="pokemonList.execFilter()" (focusin)="searchBoxFocused = true" (focusout)="searchBoxFocused = false">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-                <i class="fa fa-search"></i>
-            </button>
-        </span>
+        <div id="search-box" class="input-group">
+            <input type="text" class="form-control" placeholder="Pokemon..." [(ngModel)]="search" (keyup)="pokemonList.execFilter()" (focusin)="searchBoxFocused = true" (focusout)="searchBoxFocused = false">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+
+        <pokemon-list #pokemonList [search]="search"></pokemon-list>
+
     </div>
-
-    <pokemon-list #pokemonList [search]="search"></pokemon-list>
-
 </aside>
 
 <main>
