@@ -11,9 +11,9 @@ import {FirstCapitalLetter} from '../pipes/first-capital-letter.pipe';
     template: `
     <div id="pokemon-list-container">
     <ul id="pokemon-list">
-        <li *ngFor="#pokemon of pokemons" class="pokemon-item valign-content" data-id="{{ pokemon.resource_uri | lastUriSegment }}">
+        <li *ngFor="#pokemon of pokemons" class="pokemon-item valign-content" data-id="{{ pokemon.id }}">
             <span class="name valigned">{{ pokemon.name | firstCapitalLetter }}<div class="separator"></div></span>
-            <span class="icon valigned"><img src="assets/pokemon/icon/{{ pokemon.resource_uri | lastUriSegment }}.png"></span>
+            <span class="icon valigned"><img src="assets/pokemon/icon/{{ pokemon.id }}.png"></span>
         </li>
     </ul>
     </div>
@@ -34,7 +34,23 @@ export class PokemonListComponent implements OnInit {
         this._pokemonService.getPokemons()
             .subscribe(
                 pokemons => {
+
+                    // give id from resource_uri to all of them
+                    pokemons.forEach(function(item) {
+                        item.id = new LastUriSegment().transform(item.resource_uri);
+                    });
+
+                    // filter only 3rd generation
                     this.allPokemons = this.filterPokemons(pokemons);
+
+                    // sort by id
+                    this.allPokemons.sort(function compare(a,b) {
+                        if (a.id < b.id) return -1;
+                        else if (a.id > b.id) return 1;
+                        else return 0;
+                    });
+
+                    // give allPokemons to filtered array
                     this.execFilter();
                 },
                 error => this.errorMessage = <any>error);
@@ -42,8 +58,7 @@ export class PokemonListComponent implements OnInit {
 
     filterPokemons(pokemons) {
         return pokemons.filter(function(item) {
-            var id = new LastUriSegment().transform(item.resource_uri);
-            return id <= 386 // 3rd generation
+            return item.id <= 386 // 3rd generation
                    && (item.name.indexOf(this.search) > -1);
         }, this);
     }
