@@ -38,8 +38,12 @@ export class PokemonListComponent implements OnInit {
 
     ngOnInit() { this.getPokemons(); }
 
-    setPokemon(pokemon) { this._pokemonService.setPokemon(pokemon); }
-    getPokemon() { return this._pokemonService.getPokemon(); }
+    getPokemon(pokemon) {
+        this._pokemonService.getPokemon(pokemon)
+            .subscribe(
+                pokemon => this._pokemonService.setPokemon(pokemon),
+                error => this.errorMessage = <any>error);
+    }
 
     getPokemons() {
         this._pokemonListService.getPokemons()
@@ -83,7 +87,7 @@ export class PokemonListComponent implements OnInit {
     }
 
     selectPokemon(id) {
-        this.setPokemon( this.allPokemons[id - 1]);
+        this.getPokemon(this.allPokemons[id - 1]);
     }
 
 }

@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import {Pokemon} from '../classes/pokemon';
 import {Observable} from 'rxjs/Observable';
+import {Pokemon} from '../classes/pokemon';
 
 @Injectable()
 export class PokemonListService {

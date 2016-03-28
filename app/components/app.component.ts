@@ -24,7 +24,8 @@ Ng2BootstrapConfig.theme = Ng2BootstrapTheme.BS4;
     ],
     providers: [
         HTTP_PROVIDERS,
-        PokemonListService
+        PokemonListService,
+        PokemonService
     ],
     pipes: [FirstCapitalLetter],
     templateUrl: 'app/templates/app.html'
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
 
     constructor(private _pokemonService:PokemonService) {}
 
-    getPokemon() { return this._pokemonService.getPokemon(); }
+    displayPokemon() { return this._pokemonService.displayPokemon(); }
 
     ngOnInit() { window.loading_screen.finish(); }
 }
