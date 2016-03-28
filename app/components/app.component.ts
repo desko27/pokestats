@@ -11,6 +11,7 @@ import {PokemonListComponent} from '../components/pokemon-list.component';
 
 import {FirstCapitalLetter} from '../pipes/first-capital-letter.pipe';
 import {StatAbbreviation} from '../pipes/stat-abbreviation.pipe';
+import {ColorTag} from '../pipes/color-tag.pipe';
 
 // load bootstrap 4
 import {Alert, Ng2BootstrapConfig, Ng2BootstrapTheme} from 'ng2-bootstrap/ng2-bootstrap';
@@ -28,7 +29,11 @@ Ng2BootstrapConfig.theme = Ng2BootstrapTheme.BS4;
         PokemonListService,
         PokemonService
     ],
-    pipes: [FirstCapitalLetter, StatAbbreviation],
+    pipes: [
+        FirstCapitalLetter,
+        StatAbbreviation,
+        ColorTag
+    ],
     templateUrl: 'app/templates/app.html'
 })
 
