@@ -5,12 +5,12 @@ import {Pokemon} from '../classes/pokemon';
 import {PokemonListService} from '../services/pokemon-list.service';
 import {PokemonService} from '../services/pokemon.service';
 
-import {LastUriSegment} from '../pipes/last-uri-segment.pipe';
 import {FirstCapitalLetter} from '../pipes/first-capital-letter.pipe';
+import {LastUriSegment} from '../pipes/last-uri-segment.pipe';
 
 @Component({
     selector: 'pokemon-list',
-    pipes: [LastUriSegment, FirstCapitalLetter],
+    pipes: [FirstCapitalLetter],
     inputs: ['search'],
     template: `
     <div id="pokemon-list-container">
