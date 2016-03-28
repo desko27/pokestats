@@ -33,11 +33,43 @@ Ng2BootstrapConfig.theme = Ng2BootstrapTheme.BS4;
 })
 
 export class AppComponent implements OnInit {
-    search: string = '';
 
     constructor(private _pokemonService:PokemonService) {}
+    
+    search: string = '';
+
+    stats_table = {
+        'hp':   'hp',
+        'atk':  'attack',
+        'def':  'defense',
+        'satk': 'special-attack',
+        'sdef': 'special-defense',
+        'spd':  'speed'
+    }
+
+    getKeysOfStatsTable() : Array<string> {
+        return Object.keys(this.stats_table);
+    }
+
+    getBaseStat(key) : number {
+
+        if (this.displayPokemon().stats !== undefined) {
+
+            for (var i = Object.keys(this.displayPokemon().stats).length - 1; i >= 0; i--) {
+
+                var real_keys = Object.keys(this.displayPokemon().stats);
+                var real_stat = this.displayPokemon().stats[real_keys[i]];
+
+                if (real_stat.stat.name === this.stats_table[key])
+                    return real_stat.base_stat;
+
+            }
+        }
+        return 0;
+    }
 
     displayPokemon() { return this._pokemonService.displayPokemon(); }
 
     ngOnInit() { window.loading_screen.finish(); }
+
 }
