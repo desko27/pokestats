@@ -79,4 +79,4 @@ h3 { font-size: 30px; font-weight: 600; }
 #stats-table .stat:hover .progress { opacity: .7; }
 #stats-table .stat .piece { display: inline-block; width: 30%; }
 #stats-table .stat .progress[value]::-webkit-progress-bar { background-color: transparent; }
-#stats-table .stat .progress[value]::-webkit-progress-value { border-radius: 10px; }
+#stats-table .stat .progress[value]::-webkit-progress-value { border-radius: 10px; transition: width .3s ease; }

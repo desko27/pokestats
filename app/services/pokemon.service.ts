@@ -16,13 +16,14 @@ export class PokemonService {
 
     setPokemon(pokemon) {
         this._pokemon = pokemon;
+        console.log(this._pokemon);
     }
 
     getPokemon(pokemon) {
         // return api data for this pokemon
         return this.http.get('http://pokeapi.co/' + pokemon.resource_uri)
             .map(res => <Pokemon>res.json())
-            .do(data => console.log(data)) // eyeball results in the console
+            // .do(data => console.log(data)) // eyeball results in the console
             .catch(this.handleError);
     }
 
