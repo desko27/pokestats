@@ -32,6 +32,7 @@ export class PokemonListComponent implements OnInit {
     search: string;
 
     // local vars
+    firstApiCall: boolean = true;
     errorMessage: string;
     allPokemons: Pokemon[];
     pokemons: Pokemon[];
@@ -41,8 +42,19 @@ export class PokemonListComponent implements OnInit {
     getPokemon(pokemon) {
         this._pokemonService.getPokemon(pokemon)
             .subscribe(
-                pokemon => this._pokemonService.setPokemon(pokemon),
-                error => this.errorMessage = <any>error);
+            pokemon => {
+
+                this._pokemonService.setPokemon(pokemon);
+
+                if (this.firstApiCall) {
+                    
+                    // finish the startup loading screen
+                    window.loading_screen.finish();
+                    this.firstApiCall = false;
+                }
+
+            },
+            error => this.errorMessage = <any>error);
     }
 
     getPokemons() {

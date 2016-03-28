@@ -75,6 +75,6 @@ export class AppComponent implements OnInit {
 
     displayPokemon() { return this._pokemonService.displayPokemon(); }
 
-    ngOnInit() { window.loading_screen.finish(); }
+    ngOnInit() {}
 
 }
