@@ -1,4 +1,5 @@
 /* bootstrap fixes */
+.row > div { overflow: hidden; }
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover { z-index: inherit; }
 
 /* loading screen */
@@ -12,8 +13,19 @@
 /* boilerplate */
 *:focus { outline: none !important; }
 body { background: #338166; font-family: 'Open Sans'; }
-main { margin-left: 70px; padding-top: 70px; padding-left: 30px; padding-right: 30px; color: #fff; }
+main { margin-left: 70px; margin-top: 40px; padding-left: 30px; padding-right: 30px; color: #fff; }
 .input-group * { border: none; border-radius: 0; }
+
+/* responsive variable styles */
+h1 { font-size: 55px; font-weight: 800; }
+h2 { font-size: 33px; font-weight: 700; }
+.progress { margin-bottom: 6px; height: 22px; }
+
+@media (max-width: 1300px) {
+    h1 { font-size: 45px; font-weight: 800; }
+    h2 { font-size: 27px; font-weight: 700; }
+    .progress { margin-bottom: 6px; height: 18px; }
+}
 
 /* common styles */
 .clickable { -webkit-user-select: none; cursor: pointer; }
@@ -52,8 +64,10 @@ main { margin-left: 70px; padding-top: 70px; padding-left: 30px; padding-right: 
 #picture img { image-rendering: pixelated; width: 100%; height: auto; max-width: 288px; max-height: 288px; }
 
 /* basic pokemon characteristics */
-#name { font-size: 55px; font-family: 'Open Sans', sans-serif; font-weight: 800; }
 #nature { width: 300px; margin-top: 33px; }
 #level { width: 200px; margin-top: 33px; }
 #level input { text-align: center; }
 #level .arrow { padding-left: 3px; padding-right: 3px; }
+#stats-table { margin-top: 33px; text-align: center; }
+#stats-table .stat { margin-top: 15px; }
+#stats-table .stat .piece { display: inline-block; width: 30%; }
