@@ -56,14 +56,14 @@ export class AppComponent implements OnInit {
 
     getBaseStat(key) : number {
 
-        if (this.displayPokemon().stats !== undefined) {
+        if (this.displayPokemon().stats != undefined) {
 
             for (var i = Object.keys(this.displayPokemon().stats).length - 1; i >= 0; i--) {
 
                 var real_keys = Object.keys(this.displayPokemon().stats);
                 var real_stat = this.displayPokemon().stats[real_keys[i]];
 
-                if (real_stat.stat.name === this.stats_table[key])
+                if (real_stat.stat.name == this.stats_table[key])
                     return real_stat.base_stat;
 
             }

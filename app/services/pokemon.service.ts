@@ -16,6 +16,8 @@ export class PokemonService {
 
     setPokemon(pokemon) {
         this._pokemon = pokemon;
+
+        // debug retrieved object
         console.log(this._pokemon);
     }
 
