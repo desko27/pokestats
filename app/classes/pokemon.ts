@@ -8,9 +8,4 @@ export class Pokemon {
   // api full data
   stats: Object[];
 
-  // displaying functions
-  public getOrderedStats() { // NOT WORKING
-      return this.stats === undefined ? [] : this.stats.reverse();
-  }
-
 }
