@@ -3,6 +3,7 @@
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover { z-index: inherit; }
 
 /* loading screen */
+#nanobar > div { background-color: #5bc0de !important; }
 .pg-loading h1 { color: #fff; font-size: 55px; font-family: 'Open Sans', sans-serif; font-weight: 800; }
 .pg-loading-screen .pg-loading-logo { animation-name: rotate; animation-duration: 2s; animation-iteration-count: infinite; animation-timing-function: linear; }
 @keyframes rotate {

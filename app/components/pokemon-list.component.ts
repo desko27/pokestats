@@ -4,12 +4,14 @@ import {Pokemon} from '../classes/pokemon';
 
 import {PokemonListService} from '../services/pokemon-list.service';
 import {PokemonService} from '../services/pokemon.service';
+import {NanobarService} from '../services/nanobar.service';
 
 import {FirstCapitalLetter} from '../pipes/first-capital-letter.pipe';
 import {LastUriSegment} from '../pipes/last-uri-segment.pipe';
 
 @Component({
     selector: 'pokemon-list',
+    providers: [NanobarService],
     pipes: [FirstCapitalLetter],
     inputs: ['search'],
     template: `
@@ -25,9 +27,6 @@ import {LastUriSegment} from '../pipes/last-uri-segment.pipe';
 })
 export class PokemonListComponent implements OnInit {
 
-    constructor(private _pokemonListService: PokemonListService,
-                private _pokemonService: PokemonService) { }
-
     // inputs
     search: string;
 
@@ -37,14 +36,24 @@ export class PokemonListComponent implements OnInit {
     allPokemons: Pokemon[];
     pokemons: Pokemon[];
 
+    constructor(private _pokemonListService: PokemonListService,
+        private _pokemonService: PokemonService,
+        private _nanobar: NanobarService) { }
+
+
     ngOnInit() { this.getPokemons(); }
 
     getPokemon(pokemon) {
+
+        this._nanobar.start();
+
         this._pokemonService.getPokemon(pokemon)
             .subscribe(
             pokemon => {
 
                 this._pokemonService.setPokemon(pokemon);
+
+                this._nanobar.finish();
 
                 if (this.firstApiCall) {
                     
@@ -58,6 +67,7 @@ export class PokemonListComponent implements OnInit {
     }
 
     getPokemons() {
+
         this._pokemonListService.getPokemons()
             .subscribe(
                 pokemons => {
@@ -87,18 +97,25 @@ export class PokemonListComponent implements OnInit {
     }
 
     filterPokemons(pokemons) {
+
         return pokemons.filter(function(item) {
+            
             return item.id <= 386 // 3rd generation
                    && (item.name.indexOf(this.search) > -1);
-        }, this);
+
+            },
+            this);
+
     }
 
     execFilter() {
+
         document.getElementById('pokemon-list-container').scrollTop = 0;
         this.pokemons = this.filterPokemons(this.allPokemons);
     }
 
     selectPokemon(id) {
+
         this.getPokemon(this.allPokemons[id - 1]);
     }
 

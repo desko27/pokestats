@@ -36,8 +36,6 @@ Ng2BootstrapConfig.theme = Ng2BootstrapTheme.BS4;
 })
 
 export class AppComponent implements OnInit {
-
-    constructor(private _pokemonService:PokemonService) {}
     
     search: string = '';
 
@@ -50,7 +48,13 @@ export class AppComponent implements OnInit {
         'spd':  'speed'
     }
 
+    constructor(private _pokemonService:PokemonService) {}
+
+    
+    ngOnInit() {}
+
     getKeysOfStatsTable() : Array<string> {
+
         return Object.keys(this.stats_table);
     }
 
@@ -71,8 +75,9 @@ export class AppComponent implements OnInit {
         return 0;
     }
 
-    displayPokemon() { return this._pokemonService.displayPokemon(); }
+    displayPokemon() {
 
-    ngOnInit() {}
+        return this._pokemonService.displayPokemon();
+    }
 
 }
