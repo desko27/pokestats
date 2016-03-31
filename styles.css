@@ -47,7 +47,7 @@ h3 { font-size: 30px; font-weight: 600; }
 #sidebar #search-box input { padding: 5px 10px; font-size: 35px; }
 #sidebar #search-box button { width: 70px; font-size: 35px; text-align: center; padding: 0; }
 #sidebar #search-box button i { line-height: 70px; }
-#sidebar:hover, #sidebar.keep { left: 0; box-shadow: 5px 0px 20px #111; }
+#sidebar:hover, #sidebar.keep { left: 0; box-shadow: 1px 0px 20px #111; }
 #sidebar:hover #pokemon-list, #sidebar.keep #pokemon-list { left: 0; background: #363636; }
 #sidebar:hover img, #sidebar.keep img { left: 0; -webkit-filter: grayscale(0%) !important; }
 
