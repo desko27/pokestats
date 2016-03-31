@@ -11,7 +11,7 @@
 }
 
 /* nanobar */
-#nanobar > div { background-color: #5bc0de !important; box-shadow: 0 0 10px #3a81f0, 0 0 5px #29d; }
+#nanobar > div { background-color: #5bc0de !important; box-shadow: 0 0 10px #3a81f0, 0 0 3px #29d; }
 
 /* boilerplate */
 *:focus { outline: none !important; }
