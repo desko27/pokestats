@@ -26,19 +26,8 @@
 
                 <div><!-- flexbox vertical aligns this child -->
                     <h1 id="name">{{ displayPokemon().name | firstCapitalLetter }}</h1>
-
-                    <div id="nature" class="input-group input-group-lg">
-                        <span class="input-group-addon">Nature</span>
-                        <input type="text" class="form-control">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    </div>
-
-                    <div id="level" class="input-group input-group-lg">
-                        <span class="input-group-addon">Lv.</span>
-                        <input type="text" class="form-control" value="100">
-                        <span class="input-group-addon arrow clickable">◄</span>
-                        <span class="input-group-addon arrow clickable">►</span>
-                    </div>
+                    <h3 id="level">Lv. <input class="simple underline" value="100">,</h3>
+                    <h3 id="nature"><input class="simple underline" value="Adamant" placeholder="Nature"></h3>
                 </div>
             </div>
 
@@ -50,8 +39,8 @@
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <h3 class="piece">{{ key | uppercase }}</h3>
-                    <h3 class="piece"><input value="31"></h3>
-                    <h3 class="piece"><input value="250"></h3>
+                    <h3 class="piece"><input class="simple" value="31"></h3>
+                    <h3 class="piece"><input class="simple" value="250"></h3>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 flexbox">
                     <progress class="progress progress-{{ getBaseStat(key) | colorTag }}" value="{{ getBaseStat(key) }}" max="100"></progress>

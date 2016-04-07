@@ -33,8 +33,11 @@ h3 { font-size: 30px; font-weight: 600; }
 }
 
 /* common styles */
-.clickable { -webkit-user-select: none; cursor: pointer; }
 .pad { padding: 15px; }
+.clickable { -webkit-user-select: none; cursor: pointer; }
+input.simple { text-align: center; background: transparent; border: none; padding: 0; }
+input.simple:hover, input.simple:focus { color: #fc0; }
+input.simple.underline { border-bottom: 3px dotted #fff; }
 
 .valign-content { display: table; }
 .valigned { display: table-cell; vertical-align: middle; }
@@ -69,10 +72,10 @@ h3 { font-size: 30px; font-weight: 600; }
 #picture img { image-rendering: pixelated; width: 100%; height: auto; max-width: 288px; max-height: 288px; }
 
 /* basic pokemon characteristics */
-#nature { width: 300px; margin-top: 33px; }
-#level { width: 200px; margin-top: 33px; }
-#level input { text-align: center; }
-#level .arrow { padding-left: 3px; padding-right: 3px; }
+#level, #nature { margin-top: 33px; display: inline-block; }
+#level input { width: 65px; }
+#nature { margin-left: 15px; }
+#nature input { width: 150px; text-align: left; padding-left: 5px; }
 
 /* stats table */
 #stats-table { margin-top: 33px; text-align: center; }
@@ -80,7 +83,8 @@ h3 { font-size: 30px; font-weight: 600; }
 #stats-table .stat:first-child { border-top: 1px solid #686868; }
 #stats-table .stat:hover { color: #aec9ae; }
 #stats-table .stat:hover .progress { opacity: .7; }
+#stats-table .stat:hover input.simple { color: #fc0; }
 #stats-table .stat .piece { display: inline-block; width: 30%; }
-#stats-table .stat .piece input { width: 100%; text-align: center; background: transparent; border: none; padding: 0; }
+#stats-table .stat .piece input { width: 100%; }
 #stats-table .stat .progress[value]::-webkit-progress-bar { background-color: transparent; }
 #stats-table .stat .progress[value]::-webkit-progress-value { border-radius: 10px; transition: width 1s ease; }
