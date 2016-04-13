@@ -39,6 +39,9 @@ export class AppComponent implements OnInit {
     
     search: string = '';
 
+    level: number = 100;
+    nature: string = '';
+
     stats_table = {
         'hp':   'hp',
         'atk':  'attack',
@@ -48,6 +51,9 @@ export class AppComponent implements OnInit {
         'spd':  'speed'
     }
 
+    iv: { [id: string]: number; } = { 'hp': 31, 'atk': 31, 'def': 31, 'satk': 31, 'sdef': 31, 'spd': 31 };
+    ev: { [id: string]: number; } = { 'hp': 0,  'atk': 0,  'def': 0,  'satk': 0,  'sdef': 0,  'spd': 0  };
+
     constructor(private _pokemonService:PokemonService) {}
 
     
@@ -56,6 +62,11 @@ export class AppComponent implements OnInit {
     getKeysOfStatsTable() : Array<string> {
 
         return Object.keys(this.stats_table);
+    }
+
+    displayPokemon() {
+
+        return this._pokemonService.displayPokemon();
     }
 
     getBaseStat(key) : number {
@@ -72,12 +83,42 @@ export class AppComponent implements OnInit {
 
             }
         }
-        return 0;
+        return -1;
     }
 
-    displayPokemon() {
+    getCalculatedStat(key) : number {
 
-        return this._pokemonService.displayPokemon();
+        var base_stat = this.getBaseStat(key);
+        if (base_stat != -1) {
+
+            // formula vars
+            var B = base_stat;
+            var I = +this.iv[key];
+            var E = Math.floor(+this.ev[key] / 4);
+            var L = +this.level;
+            var N = 1;
+
+            if (key == 'hp') {
+
+                if (this.displayPokemon().name == 'shedinja') {
+
+                    // shedinja special case
+                    return 1;
+
+                } else {
+
+                    // hp formula
+                    return Math.floor( (2 * B + I + E) * L / 100 + L + 10 );
+                }
+
+            } else {
+                
+                // common case formula
+                return Math.floor( Math.floor( (2 * B + I + E) * L / 100 + 5 ) * N );
+            }
+
+        }
+        return 0;
     }
 
 }

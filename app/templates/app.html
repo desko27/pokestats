@@ -26,8 +26,8 @@
 
                 <div><!-- flexbox vertical aligns this child -->
                     <h1 id="name">{{ displayPokemon().name | firstCapitalLetter }}</h1>
-                    <h3 id="level">Lv. <input class="simple underline" value="100">,</h3>
-                    <h3 id="nature"><input class="simple underline" value="Adamant" placeholder="Nature"></h3>
+                    <h3 id="level">Lv. <input class="simple underline" [(ngModel)]="level" value="">,</h3>
+                    <h3 id="nature"><input class="simple underline" [(ngModel)]="nature" value="" placeholder="Nature"></h3>
                 </div>
             </div>
 
@@ -39,14 +39,14 @@
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <h3 class="piece">{{ key | uppercase }}</h3>
-                    <h3 class="piece"><input class="simple" value="31"></h3>
-                    <h3 class="piece"><input class="simple" value="250"></h3>
+                    <h3 class="piece"><input class="simple" [(ngModel)]="iv[key]" value=""></h3>
+                    <h3 class="piece"><input class="simple" [(ngModel)]="ev[key]" value=""></h3>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 flexbox">
-                    <progress class="progress progress-{{ getBaseStat(key) | colorTag }}" value="{{ getBaseStat(key) }}" max="100"></progress>
+                    <progress class="progress progress-{{ getCalculatedStat(key) | colorTag }}" value="{{ getCalculatedStat(key) }}" max="400"></progress>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
-                    <h3>{{ getBaseStat(key) }}</h3>
+                    <h3>{{ getCalculatedStat(key) }}</h3>
                 </div>
 
             </div>
