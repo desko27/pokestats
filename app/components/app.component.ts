@@ -39,9 +39,14 @@ export class AppComponent implements OnInit {
     
     search: string = '';
 
+    // pokemon parameters
     level: number = 100;
     nature: string = '';
+    iv: { [id: string]: number; } = { 'hp': 31, 'atk': 31, 'def': 31, 'satk': 31, 'sdef': 31, 'spd': 31 };
+    ev: { [id: string]: number; } = { 'hp': 0,  'atk': 0,  'def': 0,  'satk': 0,  'sdef': 0,  'spd': 0  };
 
+    // pure stats
+    max_stat: number = 400;
     stats_table = {
         'hp':   'hp',
         'atk':  'attack',
@@ -50,9 +55,6 @@ export class AppComponent implements OnInit {
         'sdef': 'special-defense',
         'spd':  'speed'
     }
-
-    iv: { [id: string]: number; } = { 'hp': 31, 'atk': 31, 'def': 31, 'satk': 31, 'sdef': 31, 'spd': 31 };
-    ev: { [id: string]: number; } = { 'hp': 0,  'atk': 0,  'def': 0,  'satk': 0,  'sdef': 0,  'spd': 0  };
 
     constructor(private _pokemonService:PokemonService) {}
 
@@ -67,6 +69,11 @@ export class AppComponent implements OnInit {
     displayPokemon() {
 
         return this._pokemonService.displayPokemon();
+    }
+
+    getLeveledMaxStat() : number {
+
+        return this.max_stat * (+this.level) / 100;
     }
 
     getBaseStat(key) : number {

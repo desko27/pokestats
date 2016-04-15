@@ -1,17 +1,25 @@
 <aside id="sidebar" [ngClass]="{keep: searchBoxFocused}">
     
     <div id="search-box" class="input-group">
-        <input type="text" class="form-control" placeholder="Pokemon..." [(ngModel)]="search" (keyup)="pokemonList.execFilter()" (focusin)="searchBoxFocused = true" (focusout)="searchBoxFocused = false">
+
+        <input
+            type="text" class="form-control" placeholder="Pokemon..."
+            [(ngModel)]="search" (keyup)="pokemonList.execFilter()"
+            (focusin)="searchBoxFocused = true"
+            (focusout)="searchBoxFocused = false">
+
         <span class="input-group-btn">
             <button class="btn btn-default" type="button">
                 <i class="fa fa-search"></i>
             </button>
         </span>
+
     </div>
 
     <pokemon-list #pokemonList [search]="search"></pokemon-list>
 
 </aside>
+
 
 <main>
     <div class="container-fluid">
@@ -33,6 +41,7 @@
 
         </div>
 
+
         <div id="stats-table">
             
             <div *ngFor="#key of getKeysOfStatsTable()" class="row stat stat-{{ key }}">
@@ -42,9 +51,15 @@
                     <h3 class="piece"><input class="simple" [(ngModel)]="iv[key]" value=""></h3>
                     <h3 class="piece"><input class="simple" [(ngModel)]="ev[key]" value=""></h3>
                 </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 flexbox">
-                    <progress class="progress progress-{{ getCalculatedStat(key) | colorTag }}" value="{{ getCalculatedStat(key) }}" max="400"></progress>
+                    <progress
+                        class="progress progress-{{ getCalculatedStat(key) | colorTag:getLeveledMaxStat() }}"
+                        value="{{ getCalculatedStat(key) }}"
+                        max="{{ getLeveledMaxStat() }}">
+                    </progress>
                 </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
                     <h3>{{ getCalculatedStat(key) }}</h3>
                 </div>
