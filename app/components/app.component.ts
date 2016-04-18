@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
         'careful': { 'buff': 'sdef', 'nerf': 'satk' }
     }
 
-    constructor(private _pokemonService: PokemonService, private cdr: ChangeDetectorRef) { }
+    constructor(private _pokemonService: PokemonService) { }
 
     
     ngOnInit() { }
