@@ -56,14 +56,48 @@ export class AppComponent implements OnInit {
         'spd':  'speed'
     }
 
-    constructor(private _pokemonService:PokemonService) {}
+    // natures
+    natures_table = {
+        'hardy':   { 'buff': null,   'nerf': null   },
+        'lonely':  { 'buff': 'atk',  'nerf': 'def'  },
+        'brave':   { 'buff': 'atk',  'nerf': 'spd'  },
+        'adamant': { 'buff': 'atk',  'nerf': 'satk' },
+        'naughty': { 'buff': 'atk',  'nerf': 'sdef' },
+        'docile':  { 'buff': null,   'nerf': null   },
+        'bold':    { 'buff': 'def',  'nerf': 'atk'  },
+        'relaxed': { 'buff': 'def',  'nerf': 'spd'  },
+        'impish':  { 'buff': 'def',  'nerf': 'satk' },
+        'lax':     { 'buff': 'def',  'nerf': 'sdef' },
+        'serious': { 'buff': null,   'nerf': null   },
+        'timid':   { 'buff': 'spd',  'nerf': 'atk'  },
+        'hasty':   { 'buff': 'spd',  'nerf': 'def'  },
+        'jolly':   { 'buff': 'spd',  'nerf': 'satk' },
+        'naive':   { 'buff': 'spd',  'nerf': 'sdef' },
+        'bashful': { 'buff': null,   'nerf': null   },
+        'modest':  { 'buff': 'satk', 'nerf': 'atk'  },
+        'mild':    { 'buff': 'satk', 'nerf': 'def'  },
+        'quiet':   { 'buff': 'satk', 'nerf': 'spd'  },
+        'rash':    { 'buff': 'satk', 'nerf': 'sdef' },
+        'quirky':  { 'buff': null,   'nerf': null   },
+        'calm':    { 'buff': 'sdef', 'nerf': 'atk'  },
+        'gentle':  { 'buff': 'sdef', 'nerf': 'def'  },
+        'sassy':   { 'buff': 'sdef', 'nerf': 'spd'  },
+        'careful': { 'buff': 'sdef', 'nerf': 'satk' }
+    }
+
+    constructor(private _pokemonService: PokemonService, private cdr: ChangeDetectorRef) { }
 
     
-    ngOnInit() {}
+    ngOnInit() { }
 
     getKeysOfStatsTable() : Array<string> {
 
         return Object.keys(this.stats_table);
+    }
+
+    getKeysOfNaturesTable() : Array<string> {
+
+        return Object.keys(this.natures_table);
     }
 
     displayPokemon() {
@@ -105,6 +139,24 @@ export class AppComponent implements OnInit {
             var L = +this.level;
             var N = 1;
 
+            // consider nature
+            if (this.nature.toLowerCase() in this.natures_table) {
+
+                var nature = this.natures_table[this.nature.toLowerCase()];
+
+                // match! capitalize input! - still problematic
+                // this.nature = new FirstCapitalLetter().transform(this.nature);
+
+                // we're looking for non-neutral natures
+                if (nature['buff'] !== null && nature['nerf'] !== null) {
+
+                    if (nature['buff'] == key) { N = 1.1; } else
+                    if (nature['nerf'] == key) { N = 0.9; }
+                }
+
+            }
+
+            // apply formulas
             if (key == 'hp') {
 
                 if (this.displayPokemon().name == 'shedinja') {
