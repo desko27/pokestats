@@ -39,6 +39,9 @@ export class AppComponent implements OnInit {
     
     search: string = '';
 
+    // validation errors
+    natureError: boolean = false;
+
     // pokemon parameters
     level: number = 100;
     nature: string = '';
@@ -144,9 +147,6 @@ export class AppComponent implements OnInit {
 
                 var nature = this.natures_table[this.nature.toLowerCase()];
 
-                // match! capitalize input! - still problematic
-                // this.nature = new FirstCapitalLetter().transform(this.nature);
-
                 // we're looking for non-neutral natures
                 if (nature['buff'] !== null && nature['nerf'] !== null) {
 
@@ -178,6 +178,23 @@ export class AppComponent implements OnInit {
 
         }
         return 0;
+    }
+
+    // this executes only when writing (keyup) in nature input
+    validateNature() {
+
+        if (this.nature.toLowerCase() in this.natures_table) {
+
+            // match! capitalize input & remove validation error
+            this.nature = new FirstCapitalLetter().transform(this.nature);
+            this.natureError = false;
+
+        } else {
+
+            // validation: written nature not in the list
+            this.natureError = true;
+        }
+
     }
 
 }

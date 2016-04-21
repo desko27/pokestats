@@ -37,7 +37,9 @@ h3 { font-size: 30px; font-weight: 600; }
 .clickable { -webkit-user-select: none; cursor: pointer; }
 input.simple { text-align: center; background: transparent; border: none; padding: 0; }
 input.simple:hover, input.simple:focus { color: #fc0; }
+input.simple.error { color: #a0294c; }
 input.simple.underline { border-bottom: 3px dotted #fff; }
+input.simple::-webkit-calendar-picker-indicator { background-color: transparent; color: #fc0; cursor: pointer; }
 
 .valign-content { display: table; }
 .valigned { display: table-cell; vertical-align: middle; }
@@ -76,7 +78,6 @@ input.simple.underline { border-bottom: 3px dotted #fff; }
 #level input { width: 65px; }
 #nature { margin-left: 15px; }
 #nature input { width: 185px; text-align: left; padding-left: 5px; }
-#nature input::-webkit-calendar-picker-indicator { background-color: transparent; cursor: pointer; }
 
 /* stats table */
 #stats-table { margin-top: 33px; text-align: center; }
