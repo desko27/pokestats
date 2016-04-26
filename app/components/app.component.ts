@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, NgZone} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {NgClass} from 'angular2/common';
 
@@ -88,7 +88,15 @@ export class AppComponent implements OnInit {
         'careful': { 'buff': 'sdef', 'nerf': 'satk' }
     }
 
-    constructor(private _pokemonService: PokemonService) { }
+    constructor(private _pokemonService: PokemonService, private _ngZone: NgZone) {
+
+        // expose this component's methods so they're callable outside angular
+        window.angularComponentRef = {component: this, zone: _ngZone};
+    }
+
+    ngOnDestroy() {
+        window.angularComponent = null;
+    }
 
     
     ngOnInit() { }
