@@ -188,7 +188,7 @@ export class AppComponent implements OnInit {
         return 0;
     }
 
-    // this executes only when writing (keyup) in nature input
+    // this executes outside through jquery since the input event is missing in angular2
     validateNature() {
 
         if (this.nature.toLowerCase() in this.natures_table) {
