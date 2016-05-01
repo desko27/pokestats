@@ -118,10 +118,11 @@ export class AppComponent implements OnInit {
 
     getLeveledMaxStat() : number {
 
-        return this.max_stat * (+this.level) / 100;
+        var L = this.defaultIfInvalid(+this.level, 1, 100, 100);
+        return this.max_stat * L / 100;
     }
 
-    getBaseStat(key) : number {
+    getBaseStat(key): number {
 
         if (this.displayPokemon().stats != undefined) {
 
@@ -138,16 +139,16 @@ export class AppComponent implements OnInit {
         return -1;
     }
 
-    getCalculatedStat(key) : number {
+    getCalculatedStat(key): number {
 
         var base_stat = this.getBaseStat(key);
         if (base_stat != -1) {
 
             // formula vars
             var B = base_stat;
-            var I = +this.iv[key];
-            var E = Math.floor(+this.ev[key] / 4);
-            var L = +this.level;
+            var I = this.defaultIfInvalid(+this.iv[key], 0, 31);
+            var E = this.defaultIfInvalid(Math.floor(+this.ev[key] / 4), 0, 255);
+            var L = this.defaultIfInvalid(+this.level, 1, 100, 100);
             var N = 1;
 
             // consider nature
@@ -202,6 +203,28 @@ export class AppComponent implements OnInit {
             // validation: written nature not in the list
             this.natureError = true;
         }
+
+    }
+
+    isValidRange(value, min, max): boolean {
+
+        // check if it is a number
+        if (typeof +value === 'number' && (value % 1) === 0) {
+
+            // check range
+            if (value >= min && value <= max) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    defaultIfInvalid(value, min, max, def = 0): number {
+
+        if (this.isValidRange(value, min, max)) { return value; }
+        return def;
 
     }
 

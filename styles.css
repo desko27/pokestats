@@ -37,7 +37,7 @@ h3 { font-size: 30px; font-weight: 600; }
 .clickable { -webkit-user-select: none; cursor: pointer; }
 input.simple { text-align: center; background: transparent; border: none; padding: 0; }
 input.simple:hover, input.simple:focus { color: #fc0; }
-input.simple.error { color: #a0294c; }
+input.simple.error { color: #a0294c !important; }
 input.simple.underline { border-bottom: 3px dotted #fff; }
 input.simple::-webkit-calendar-picker-indicator { background-color: transparent; color: #fc0; cursor: pointer; }
 

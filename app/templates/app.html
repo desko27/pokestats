@@ -34,7 +34,7 @@
 
                 <div><!-- flexbox vertical aligns this child -->
                     <h1 id="name">{{ displayPokemon().name | firstCapitalLetter }}</h1>
-                    <h3 id="level">Lv. <input class="simple underline" [(ngModel)]="level" value="">,</h3>
+                    <h3 id="level">Lv. <input class="simple underline" [ngClass]="{error: !isValidRange(level, 1, 100)}" [(ngModel)]="level" value="">,</h3>
                     <h3 id="nature"><input class="simple underline" [ngClass]="{error: natureError}" [(ngModel)]="nature" value="" placeholder="Nature" list="nature-list"></h3>
                     <datalist id="nature-list">
                         <option *ngFor="#key of getKeysOfNaturesTable()" value="{{ key | firstCapitalLetter }}">
@@ -51,8 +51,8 @@
                 
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <h3 class="piece">{{ key | uppercase }}</h3>
-                    <h3 class="piece"><input class="simple" [(ngModel)]="iv[key]" value=""></h3>
-                    <h3 class="piece"><input class="simple" [(ngModel)]="ev[key]" value=""></h3>
+                    <h3 class="piece"><input class="simple" [ngClass]="{error: !isValidRange(iv[key], 0,  31)}" [(ngModel)]="iv[key]" value=""></h3>
+                    <h3 class="piece"><input class="simple" [ngClass]="{error: !isValidRange(ev[key], 0, 255)}" [(ngModel)]="ev[key]" value=""></h3>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 flexbox">
