@@ -1,4 +1,4 @@
-import {Component, OnInit, NgZone} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {NgClass} from 'angular2/common';
 
@@ -38,9 +38,6 @@ Ng2BootstrapConfig.theme = Ng2BootstrapTheme.BS4;
 export class AppComponent implements OnInit {
     
     search: string = '';
-
-    // validation errors
-    natureError: boolean = false;
 
     // pokemon parameters
     level: number = 100;
@@ -88,15 +85,7 @@ export class AppComponent implements OnInit {
         'careful': { 'buff': 'sdef', 'nerf': 'satk' }
     }
 
-    constructor(private _pokemonService: PokemonService, private _ngZone: NgZone) {
-
-        // expose this component's methods so they're callable outside angular
-        window.angularComponentRef = {component: this, zone: _ngZone};
-    }
-
-    ngOnDestroy() {
-        window.angularComponent = null;
-    }
+    constructor(private _pokemonService: PokemonService) { }
 
     
     ngOnInit() { }
@@ -189,20 +178,17 @@ export class AppComponent implements OnInit {
         return 0;
     }
 
-    // this executes outside through jquery since the input event is missing in angular2
-    validateNature() {
+    isValidNature(nature): boolean {
 
-        if (this.nature.toLowerCase() in this.natures_table) {
+        if (nature.toLowerCase() in this.natures_table) {
 
-            // match! capitalize input & remove validation error
+            // match! capitalize input too
             this.nature = new FirstCapitalLetter().transform(this.nature);
-            this.natureError = false;
+            return true;
 
-        } else {
-
-            // validation: written nature not in the list
-            this.natureError = true;
         }
+
+        return false;
 
     }
 
