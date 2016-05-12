@@ -136,7 +136,7 @@ export class AppComponent implements OnInit {
             // formula vars
             var B = base_stat;
             var I = this.defaultIfInvalid(+this.iv[key], 0, 31);
-            var E = this.defaultIfInvalid(Math.floor(+this.ev[key] / 4), 0, 255);
+            var E = Math.floor( this.defaultIfInvalid(+this.ev[key], 0, 255) / 4 );
             var L = this.defaultIfInvalid(+this.level, 1, 100, 100);
             var N = 1;
 
