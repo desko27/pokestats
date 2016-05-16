@@ -10,6 +10,10 @@
     to { transform: rotate(360deg); }
 }
 
+/* github */
+#fork-ribbon { position: absolute; top: 0; right: 0; z-index: 100; }
+#fork-ribbon img { zoom: 50%; }
+
 /* nanobar */
 #nanobar > div { background-color: #5bc0de !important; box-shadow: 0 0 10px #3a81f0, 0 0 3px #29d; }
 
