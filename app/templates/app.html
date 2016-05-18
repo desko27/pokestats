@@ -57,6 +57,7 @@
                     <h3 class="piece">{{ key | uppercase }}</h3>
                     <h3 class="piece"><input class="simple" [ngClass]="{error: !isValidRange(iv[key], 0,  31)}" [(ngModel)]="iv[key]" value=""></h3>
                     <h3 class="piece"><input class="simple" [ngClass]="{error: !isValidRange(ev[key], 0, 255)}" [(ngModel)]="ev[key]" value=""></h3>
+                    <h3 class="piece hidden-md-up">{{ getCalculatedStat(key) }}</h3>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 flexbox">
@@ -68,7 +69,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
-                    <h3>{{ getCalculatedStat(key) }}</h3>
+                    <h3 class="hidden-sm-down">{{ getCalculatedStat(key) }}</h3>
                 </div>
 
             </div>

@@ -84,7 +84,7 @@ input.simple::-webkit-calendar-picker-indicator { background-color: transparent;
 #nature input { width: 185px; text-align: left; padding-left: 5px; }
 
 /* stats table */
-#stats-table { margin-top: 33px; text-align: center; }
+#stats-table { margin: 33px 0; text-align: center; }
 #stats-table .stat { padding-top: 12px; padding-bottom: 8px; border-bottom: 1px solid #686868; }
 #stats-table .stat:first-child { border-top: 1px solid #686868; }
 #stats-table .stat:hover { color: #aec9ae; }
@@ -94,3 +94,6 @@ input.simple::-webkit-calendar-picker-indicator { background-color: transparent;
 #stats-table .stat .piece input { width: 100%; }
 #stats-table .stat .progress[value]::-webkit-progress-bar { background-color: transparent; }
 #stats-table .stat .progress[value]::-webkit-progress-value { border-radius: 10px; transition: width 1s ease; }
+
+/* responsive stat table details */
+@media (max-width: 767px) { #stats-table .stat .piece { width: 23%; } }
