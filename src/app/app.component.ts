@@ -14,6 +14,7 @@ import { FirstCapitalLetter } from './pipes/first-capital-letter.pipe';
 export class AppComponent implements OnInit {
 
   search: string = '';
+  searchBoxFocused: boolean = false;
 
   // pokemon parameters
   level: number = 100;

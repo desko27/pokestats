@@ -15,6 +15,8 @@ import { PokemonListComponent } from './components/pokemon-list.component';
 
 import { FirstCapitalLetter } from './pipes/first-capital-letter.pipe';
 import { ColorTag } from './pipes/color-tag.pipe';
+import { LastUriSegment } from './pipes/last-uri-segment.pipe';
+import { StatAbbreviation } from './pipes/stat-abbreviation.pipe';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ColorTag } from './pipes/color-tag.pipe';
 
     // pipes
     FirstCapitalLetter,
-    ColorTag
+    ColorTag,
+    LastUriSegment,
+    StatAbbreviation
   ],
   providers: [
     PokemonListService,
